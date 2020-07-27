@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.NotificationsPage"
+             Title="Notifications">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="15,30,15,30">
+            <Label Text="Friend Requests"
+                   HorizontalOptions="Center"
+                   FontSize="Large"></Label>
+            <Grid BackgroundColor="#1E1E1E"
+                  Padding="1,1,1,1">
+                <Grid BackgroundColor="White">
+                    <ListView x:Name="FriendRequestsLV"
+                              ItemsSource="{Binding FriendRequests}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="1,0,1,1"
+                                          BackgroundColor="#1E1E1E">
+                                        <Grid BackgroundColor="White">
+                                            <Label Text="{Binding Username}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"></Label>
+                                        </Grid>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Accept"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="AcceptFriendRequestBT"
+                        Command="{Binding Path=AcceptFriendRequestCommand}">
+                </Button>
+                <Button Text="Decline"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="DeclineFriendRequestBT"
+                        Command="{Binding Path=DeclineFriendRequestCommand}">
+                </Button>
+            </StackLayout>
+            <Label Text="Workout Group Requests"
+                   HorizontalOptions="Center"
+                   FontSize="Large"></Label>
+            <Grid Padding="1,1,1,1"
+                  BackgroundColor="#1E1E1E">
+                <Grid BackgroundColor="White">
+                    <ListView x:Name="WorkoutGroupRequestsLV"
+                              ItemsSource="{Binding WorkoutGroupRequests}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="1,0,1,1"
+                                          BackgroundColor="#1E1E1E">
+                                        <Grid BackgroundColor="White">
+                                            <Label Text="{Binding WorkoutGroupName}"
+                                                   FontSize="Medium"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"></Label>
+                                        </Grid>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Accept"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="AcceptWorkoutGroupRequestBT"
+                        Command="{Binding Path=AcceptWorkoutGroupRequestCommand}">
+                </Button>
+                <Button Text="Decline"
+                        HorizontalOptions="CenterAndExpand"
+                        x:Name="DeclineWorkoutGroupRequestBT"
+                        Command="{Binding Path=DeclineWorkoutGroupRequestCommand}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

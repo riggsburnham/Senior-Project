@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:GodsAmongSheep.Shared.Models;assembly=GodsAmongSheep.Shared"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.ManageWorkoutGroupPage"
+             Title="Manage Workout Group">
+    <ContentPage.Content>
+        <Grid Margin="15,30,15,30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Text="{Binding WorkoutGroupName}"
+                   d:Text="WorkoutGroup Name"
+                   FontSize="Large"
+                   HorizontalOptions="Center"></Label>
+            <StackLayout Orientation="Vertical"
+                         Grid.Row="1"
+                         Grid.RowSpan="7"
+                         Padding="0,5,0,0">
+                <Label Text="Competitors"
+                       FontSize="Large"
+                       HorizontalOptions="Center"></Label>
+                <Grid Padding="1,1,1,1"
+                      BackgroundColor="#1E1E1E">
+                    <Grid BackgroundColor="White">
+                        <ListView ItemsSource="{Binding Competitors}"
+                                  SelectedItem="{Binding SelectedCompetitor}"
+                                  SeparatorColor="#1E1E1E"
+                                  SeparatorVisibility="Default">
+                            <d:ListView.ItemsSource>
+                                <x:Array Type="{x:Type models:GasUser}">
+                                    <models:GasUser Username="User One"
+                                                    UserId="-1"></models:GasUser>
+                                    <models:GasUser Username="User Two"
+                                                    UserId="-1"></models:GasUser>
+                                    <models:GasUser Username="User Three"
+                                                    UserId="-1"></models:GasUser>
+                                    <models:GasUser Username="User Four"
+                                                    UserId="-1"></models:GasUser>
+                                    <models:GasUser Username="User Five"
+                                                    UserId="-1"></models:GasUser>
+                                    <models:GasUser Username="User Six"
+                                                    UserId="-1"></models:GasUser>
+                                </x:Array>
+                            </d:ListView.ItemsSource>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding Username}"
+                                               d:Text="{Binding Username}"
+                                               HorizontalOptions="Center"
+                                               VerticalTextAlignment="Center"></Label>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+            <Button Text="Invite Friend(s)"
+                    Grid.Row="8"
+                    Grid.RowSpan="2"
+                    Command="{Binding Path=NavigateToInviteFriendPopupViewCommand}"></Button>
+            <Button Text="Kick Friend"
+                    Grid.Row="10"
+                    Grid.RowSpan="2"
+                    Command="{Binding Path=KickFriendFromWorkoutGroupCommand}"></Button>
+            <Button Text="Promote Friend To Leader"
+                    Grid.Row="12"
+                    Grid.RowSpan="2"
+                    Command="{Binding Path=PromoteFriendToWorkoutGroupLeaderCommand}"></Button>
+            <Button Text="Delete Workout Group"
+                    Grid.Row="14"
+                    Grid.RowSpan="2"
+                    Command="{Binding Path=DeleteWorkoutGroupCommand}"></Button>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:views="clr-namespace:GodsAmongSheep.Views"
+       xmlns:godsAmongSheep="clr-namespace:GodsAmongSheep;assembly=GodsAmongSheep"
+       d:Shell.ItemTemplate="{StaticResource MenuTemplate}"
+       d:Shell.MenuItemTemplate="{StaticResource MenuTemplate}"
+       Title="GodsAmongSheep"
+       x:Class="GodsAmongSheep.AppShell"
+       BackgroundColor="#2D2D30"
+       TitleColor="LightGray">
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            
+
+            <!--<Color x:Key="NavigationPrimary">#2D2D30</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="#1E1E1E" />
+                <Setter Property="Shell.TitleColor" Value="LightGray" />
+                <Setter Property="Shell.DisabledColor" Value="Gray" />
+                <Setter Property="Shell.UnselectedColor" Value="Gray" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="#1E1E1E"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="LightGray"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />-->
+            
+            <!--<Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />-->
+
+
+            <!--<DataTemplate x:Key="MenuTemplate">
+                <StackLayout Orientation="Horizontal" Margin="30,10,20,10">
+                </StackLayout>
+            </DataTemplate>-->
+            <Style TargetType="Label"
+                   Class="FlyoutItemLabelStyle">
+                <Setter Property="TextColor"
+                        Value="LightGray"></Setter>
+            </Style>
+            
+            <Style TargetType="Layout"
+                   Class="FlyoutItemLayoutStyle"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="#2D2D30"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+    
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#1E1E1E" HeightRequest="50">
+            <Label Text="{Binding Path=GetUserName}" TextColor="LightGray" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+        </Grid>
+    </Shell.FlyoutHeader>
+    
+    <FlyoutItem Title="Home Page"
+                x:Name="HomePageFlyoutItem">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:WorkoutsPage}"></ShellContent>
+        </Tab>
+    </FlyoutItem>
+
+    <!--<FlyoutItem Title="Friends"
+                x:Name="FriendsPageFlyoutItem"
+                Route="IsLoggedIn">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:FriendsListPage}"></ShellContent>
+        </Tab>
+    </FlyoutItem>-->
+    <MenuItem Text="Friends"
+              Command="{Binding NavigateToFriendsPageCommand}"
+              x:Name="NavigateToFriendsMenuItem">
+    </MenuItem>
+
+    <MenuItem Text="Add Workout"
+              Command="{Binding NavigateToAddWorkoutPageCommand}"
+              x:Name="AddWorkoutPageMenuItem">
+    </MenuItem>
+
+    <MenuItem Text ="Workout Groups"
+              Command="{Binding NavigateToWorkoutGroupsPageCommand}">
+    </MenuItem>
+
+    <MenuItem Text="Notifications"
+              Command="{Binding NavigateToNotificationsPageCommand}">
+    </MenuItem>
+
+    <MenuItem Text="Log In"
+              Command="{Binding NavigateToLoginPageCommand}"
+              x:Name="LogInPageMenuItem">
+    </MenuItem>
+
+    <MenuItem Text="Log Out"
+              Command="{Binding NavigateToLogoutPageCommand}"
+              x:Name="LogOutPageMenuItem">
+    </MenuItem>
+
+        <!-- Your Pages -->
+    <!--<TabBar>
+        <Tab Title="Browse" Icon="tab_feed.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ItemsPage}" />
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
+        </Tab>
+    </TabBar>
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+              HeightRequest="50">
+                <Label Text="Gods Among Sheep"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>-->
+
+
+
+
+    
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>

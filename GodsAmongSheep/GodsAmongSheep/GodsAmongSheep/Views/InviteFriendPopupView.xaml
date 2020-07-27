@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.InviteFriendPopupView">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8"/>
+    </pages:PopupPage.Animation>
+    <StackLayout Margin="25"
+                 Padding="25"
+                 Spacing="36"
+                 BackgroundColor="White"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 Orientation="Vertical">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Padding="1,1,1,1"
+                  BackgroundColor="#1E1E1E"
+                  Grid.Row="0"
+                  Grid.RowSpan="4">
+                <Grid BackgroundColor="White">
+                    <Label Text="No more friends to invite"
+                           FontSize="Medium"
+                           HorizontalOptions="Center"
+                           IsVisible="{Binding NoMoreFriendsToInviteVisibility}"></Label>
+                    <ListView ItemsSource="{Binding FriendsToInvite, Mode=TwoWay}"
+                              SelectionMode="None"
+                              SeparatorVisibility="Default"
+                              SeparatorColor="#1E1E1E">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Data.Username}"
+                                               HorizontalOptions="Center"
+                                               FontSize="Medium"
+                                               VerticalOptions="Center"
+                                               Grid.Column="0"
+                                               Grid.ColumnSpan="3"></Label>
+                                        <Switch HorizontalOptions="Center"
+                                                Grid.Column="3"
+                                                IsToggled="{Binding Selected}"></Switch>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+            
+            <Button Text="Invite Friend(s)"
+                Grid.Row="4"
+                Command="{Binding Path=InviteFriendsCommand}"></Button>
+        </Grid>
+    </StackLayout>
+</pages:PopupPage>

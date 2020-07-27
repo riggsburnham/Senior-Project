@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.WorkoutDetailsPage"
+             Title="Workout Details">
+    <ContentPage.Content>
+        <StackLayout Margin="25,25,25,25">
+            <Label Text="{Binding Date}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Title">
+            </Label>
+            <StackLayout BackgroundColor="Black"
+                         Padding="1">
+                <Label VerticalOptions="FillAndExpand"
+                        BackgroundColor="White"
+                        FontSize="Large"
+                        Padding="10,5,10,5"
+                        Text="{Binding Description}">
+                </Label>
+            </StackLayout>
+            <ListView ItemsSource="{Binding DisplayWorkouts}"
+                      HorizontalOptions="CenterAndExpand"
+                      SelectionMode="None">
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

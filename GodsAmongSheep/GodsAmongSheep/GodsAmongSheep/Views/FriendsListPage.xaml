@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.FriendsListPage"
+             Title="Friends">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+                     Margin="15,30,15,30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="CenterAndExpand"
+                         Grid.Row="0"
+                         Grid.RowSpan="7">
+                <Label Text="Friends"
+                       HorizontalOptions="Center"
+                       FontSize="Large"></Label>
+                <Grid Padding="1,1,1,1"
+                      BackgroundColor="#1E1E1E">
+                    <Grid BackgroundColor="White">
+                        <!--<ListView ItemsSource="{Binding Friends}"
+                                        SelectionMode="Single">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Padding="1,0,1,1"
+                                              BackgroundColor="#1E1E1E">
+                                            <Grid BackgroundColor="White">
+                                                <Label Text="{Binding Username}"
+                                                       FontSize="Medium"
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="Center"></Label>
+                                            </Grid>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>-->
+                        <CollectionView ItemsSource="{Binding Friends, Mode=TwoWay}"
+                                        x:Name="WorkoutsCollectionView" 
+                                        SelectionMode="Single"
+                                        SelectionChanged="OnCollectionViewSelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="1,0,1,1"
+                                          BackgroundColor="#1E1E1E">
+                                        <StackLayout Orientation="Vertical"
+                                                     BackgroundColor="White">
+                                            <Label Text="{Binding Path=Username}" FontSize="Large" HorizontalOptions="Center"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+            <Button Text="Add Friend"
+                    Command="{Binding Path=NavigateToAddFriendPopupViewCommand}"
+                    x:Name="AddFriendButton"
+                    Grid.Row="7"></Button>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

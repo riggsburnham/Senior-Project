@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.AddWorkoutsPage"
+             Title="Add Workout">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,10">
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Workout Date"
+                       HorizontalOptions="EndAndExpand"
+                       VerticalOptions="Center"></Label>
+                <DatePicker Date="{Binding Date}"
+                            HorizontalOptions="StartAndExpand"
+                            ></DatePicker>
+            </StackLayout>
+
+            <!-- Grid containing all the switches for workout type -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                    <Grid Padding="0,0,0,0"
+                      HorizontalOptions="CenterAndExpand"
+                      VerticalOptions="Start"
+                      Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Text="{Binding Path=Legs}" 
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="0"
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=LegsSwitchToggled}"
+                                ClassId="Legs">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Arms}" 
+                               Grid.Row="0"
+                               Grid.Column="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="0"
+                                Grid.Column="3"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=ArmsSwitchToggled}"
+                                ClassId="Arms">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Chest}" 
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="1"
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=ChestSwitchToggled}"
+                                ClassId="Chest">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Shoulder}" 
+                               Grid.Row="1"
+                               Grid.Column="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="1"
+                                Grid.Column="3"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=ShoulderSwitchToggled}"
+                                ClassId="Shoulder">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Back}" 
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="2"
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=BackSwitchToggled}"
+                                ClassId="Back">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Abs}" 
+                               Grid.Row="2"
+                               Grid.Column="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="2"
+                                Grid.Column="3"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=AbsSwitchToggled}"
+                                ClassId="Abs">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Cardio}" 
+                               Grid.Row="3"
+                               Grid.Column="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="3"
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=CardioSwitchToggled}"
+                                ClassId="Cardio">
+                        </Switch>
+
+                        <Label Text="{Binding Path=Sports}" 
+                               Grid.Row="3"
+                               Grid.Column="2"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                        </Label>
+                        <Switch Grid.Row="3"
+                                Grid.Column="3"
+                                HorizontalOptions="Start"
+                                IsToggled="{Binding Path=SportsSwitchToggled}"
+                                ClassId="Sports">
+                        </Switch>
+                    </Grid>
+
+                <StackLayout BackgroundColor="Black"
+                             Padding="1"
+                             Grid.Row="1">
+                    <Editor VerticalOptions="FillAndExpand"
+                            BackgroundColor="White"
+                            Text="{Binding Description}">
+                    </Editor>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical"
+                             VerticalOptions="FillAndExpand"
+                             Grid.Row="2">
+                    <ListView ItemsSource="{Binding DisplayWorkouts}"
+                              HorizontalOptions="CenterAndExpand"
+                              SelectionMode="None"
+                              VerticalOptions="Start">
+                    </ListView>
+                </StackLayout>
+            </Grid>
+            <!-- End of Grid containing all the switches for workout type -->
+
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}"></ActivityIndicator>
+
+            <Button Text="Save Workout" 
+                    Command="{Binding SaveWorkoutCommand}">
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

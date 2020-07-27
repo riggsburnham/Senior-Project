@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Themes.DarkTheme">
+    <Color x:Key="NavigationPrimary">#2D2D30</Color>
+    <Style x:Key="BaseStyle" TargetType="Element">
+        <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+        <Setter Property="Shell.ForegroundColor" Value="#1E1E1E" />
+        <Setter Property="Shell.TitleColor" Value="LightGray" />
+        <Setter Property="Shell.DisabledColor" Value="Gray" />
+        <Setter Property="Shell.UnselectedColor" Value="Gray" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="#1E1E1E"/>
+        <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+        <Setter Property="Shell.TabBarTitleColor" Value="LightGray"/>
+    </Style>
+    <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+</ResourceDictionary>

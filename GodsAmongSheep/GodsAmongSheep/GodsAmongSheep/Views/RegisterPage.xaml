@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.RegisterPage"
+             Title="Register">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Padding="15,30,15,30">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Username" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center">
+                    </Label>
+                    <Entry HorizontalOptions="FillAndExpand" 
+                           Text="{Binding Path=Username}">
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Password" 
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center">
+                    </Label>
+                    <Entry HorizontalOptions="FillAndExpand" 
+                           IsPassword="True"
+                           Text="{Binding Path=Password}">
+                    </Entry>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout HorizontalOptions="Center"
+                                 VerticalOptions="Center">
+                        <Label Text="Confirm"
+                               HorizontalTextAlignment="Center"></Label>
+                        <Label Text="Password"
+                               HorizontalTextAlignment="Center"></Label>
+                    </StackLayout>
+                    <Entry HorizontalOptions="FillAndExpand" 
+                           IsPassword="True"
+                           Text="{Binding Path=ConfirmPassword}">
+                    </Entry>
+                </StackLayout>
+                <Button Text="Register" 
+                        HorizontalOptions="FillAndExpand"
+                        Command="{Binding RegisterCommand}">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

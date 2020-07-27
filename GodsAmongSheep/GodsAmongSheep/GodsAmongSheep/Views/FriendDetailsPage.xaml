@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Friends Workouts"
+             x:Class="GodsAmongSheep.Views.FriendDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Margin="15,30,15,30">
+            <Label FontSize="Title"
+               HorizontalOptions="Center"
+               Text="{Binding FriendsWorkoutsString}"></Label>
+            <Grid BackgroundColor="#1E1E1E"
+              Padding="1,1,1,1">
+                <Grid BackgroundColor="White">
+                    <Label FontSize="Large"
+                       HorizontalOptions="Center"
+                       Text="No Workouts"
+                       IsVisible="{Binding NoWorkoutsLabelVisibility}"></Label>
+                    <CollectionView ItemsSource="{Binding FriendsWorkouts, Mode=TwoWay}"
+                                    x:Name="WorkoutsCollectionView" 
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnCollectionViewSelectionChanged">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="1,0,1,1"
+                                  BackgroundColor="#1E1E1E">
+                                    <StackLayout Orientation="Vertical"
+                                             BackgroundColor="White">
+                                        <Label Text="{Binding Path=GetDate}" FontSize="Large" HorizontalOptions="Center"></Label>
+                                        <Label Text="{Binding Path=GetLength}" FontSize="Large" HorizontalOptions="Center"></Label>
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

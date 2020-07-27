@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.WorkoutGroupsPage"
+             Title="Workout Groups">
+    <ContentPage.Content>
+        <StackLayout Padding="15,30,15,30">
+            <Label FontSize="Large"
+                   Text="Workout Groups"
+                   HorizontalOptions="Center"></Label>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Padding="1,1,1,1"
+                      BackgroundColor="#1E1E1E"
+                      Grid.Row="0"
+                      Grid.RowSpan="4">
+                    <Grid BackgroundColor="White">
+                        <ListView x:Name="WorkoutGroupsLV"
+                                  ItemsSource="{Binding WorkoutGroups}"
+                                  SeparatorColor="#1E1E1E"
+                                  SeparatorVisibility="Default">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding WorkoutGroupName}"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"></Label>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                <Button Text="Go To Workout Group"
+                        Grid.Row="4"
+                        Command="{Binding Path=NavigateToWorkoutGroupPageCommand}"></Button>
+                <Button Text="Create Workout Group"
+                        Command="{Binding Path=NavigateToCreateWorkoutGroupPageCommand}"
+                        Grid.Row="5"></Button>
+                <Button Text="Leave Workout Group"
+                        Grid.Row="6"
+                        Command="{Binding Path=LeaveSelectedWorkoutGroupCommand}"></Button>
+                <Button Text="Manage Workout Group"
+                        Grid.Row="7"
+                        Command="{Binding Path=NavigateToManageWorkoutGroupPageCommand}"></Button>
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

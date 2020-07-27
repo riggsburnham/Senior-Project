@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.CreateWorkoutGroupPage"
+             Title="Create Workout Group">
+    <ContentPage.Content>
+        <StackLayout Margin="25,25,25,25">
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
+                    <Label FontSize="Medium"
+                           Text="Workout Group"
+                           HorizontalOptions="End"></Label>
+                    <Label FontSize="Medium"
+                           Text="Name"
+                           HorizontalOptions="Center"></Label>
+                </StackLayout>
+                <Entry HorizontalTextAlignment="Start"
+                       HorizontalOptions="FillAndExpand"
+                       Placeholder="Gods Among Sheep"
+                       Text="{Binding Path=WorkoutGroupNameEntry}"></Entry>
+            </StackLayout>
+            <Label FontSize="Large"
+                   Text="Invite Friends"
+                   HorizontalOptions="Center"
+                   Margin="18"></Label>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListView ItemsSource="{Binding Friends, Mode=TwoWay}"
+                          Grid.Row="0"
+                          Grid.RowSpan="8"
+                          SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding Data.Username}"
+                                           HorizontalOptions="Center"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           Grid.Column="0"
+                                           Grid.ColumnSpan="3"></Label>
+                                    <Switch HorizontalOptions="Center"
+                                            Grid.Column="3"
+                                            IsToggled="{Binding Selected}"></Switch>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Create" Grid.Row="7"
+                        Command="{Binding Path=CreateWorkoutGroupCommand}"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

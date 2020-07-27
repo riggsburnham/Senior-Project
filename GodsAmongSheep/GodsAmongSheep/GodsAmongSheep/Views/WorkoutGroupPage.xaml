@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GodsAmongSheep.Views.WorkoutGroupPage"
+             Title="{Binding WorkoutGroupName}">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="15,30,15,30">
+                <Label Text="Workouts"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Center"
+                       FontSize="Large"/>
+                <Grid Padding="1,1,1,1"
+                      BackgroundColor="#1E1E1E">
+                    <Grid BackgroundColor="White">
+                        <CollectionView ItemsSource="{Binding CompetitorsWorkouts, Mode=TwoWay}"
+                                        x:Name="WorkoutsCollectionView" 
+                                        SelectionMode="Single"
+                                        SelectionChanged="OnCollectionViewSelectionChanged">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"></GridItemsLayout>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="1,0,1,1"
+                                          BackgroundColor="#1E1E1E">
+                                        <StackLayout Orientation="Vertical"
+                                                     BackgroundColor="White">
+                                            <Label Text="{Binding Path=Competitor.Username}" 
+                                                   FontSize="Large" 
+                                                   HorizontalOptions="Center"></Label>
+                                            <Label Text="{Binding Path=CWorkout.GetDate}" 
+                                                   FontSize="Large" 
+                                                   HorizontalOptions="Center"></Label>
+                                            <Label Text="{Binding Path=CWorkout.GetLength}" 
+                                                   FontSize="Large" 
+                                                   HorizontalOptions="Center"></Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+            <Button Text="Group Chat"
+                    Command="{Binding NavigateToGroupChatPageCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
