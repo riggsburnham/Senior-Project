@@ -24,18 +24,10 @@ namespace GodsAmongSheep.Shared
 
         private string _serverName;
 
+        // TODO: need to set up database connection in order to run application
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseMySql($"server={_serverName};database=gasPremium;user=GasAdmin;password=Excalibur1337!");
-            optionsBuilder.UseMySql($"server=gasdb.c8xtvsksifgi.us-west-2.rds.amazonaws.com;port=3306;database=GasDB;user=GasAdmin;password=Excalibur1337!");
-
-
-
-            //optionsBuilder.UseMySql($"server={_serverName};database=GodsAmongSheepDB;user=GasAdmin;password=Excalibur1337!");
-            //optionsBuilder.UseMySql($"server={_serverName};database=gas_testing;user=GasAdmin;password=Excalibur1337!");
-            //optionsBuilder.UseMySql($"server={_serverName};database=test;user=testAdmin;password=password");
-            //optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-            //optionsBuilder.EnableSensitiveDataLogging(true);
+            //optionsBuilder.UseMySql($"server=sampleServerName;port=1337;database=SampleDatabase;user=SampleUser;password=SamplePassword");
         }
 
         public void SetupServer(string serverName)
